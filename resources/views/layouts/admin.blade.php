@@ -9,9 +9,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>Admin</title>
 
     <!-- Bootstrap Core CSS -->
@@ -56,9 +53,6 @@
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     <i class="fa fa-user fa-fw"></i> {{Auth::user()->name}} <i class="fa fa-caret-down">
-
-
-
                     </i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
@@ -67,7 +61,17 @@
                     <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                     </li>
                     <li class="divider"></li>
-                    <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    <li>
+                    <li>
+                        <a href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
                     </li>
                 </ul>
                 <!-- /.dropdown-user -->
@@ -128,11 +132,11 @@
                         <a href="#"><i class="fa fa-wrench fa-fw"></i>Users<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">All Users</a>
+                                <a href="{{ route('users.index') }}">All Users</a>
                             </li>
 
                             <li>
-                                <a href="#">>Create User</a>
+                                <a href="{{ route('users.create') }}">Create User</a>
                             </li>
 
                         </ul>
@@ -143,15 +147,15 @@
                         <a href="#"><i class="fa fa-wrench fa-fw"></i> Posts<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">>All Posts</a>
+                                <a href="#">All Posts</a>
                             </li>
 
                             <li>
-                                <a href="#">>Create Post</a>
+                                <a href="#">Create Post</a>
                             </li>
 
                             <li>
-                                <a href="#">>All Comments</a>
+                                <a href="#">All Comments</a>
                             </li>
 
                         </ul>

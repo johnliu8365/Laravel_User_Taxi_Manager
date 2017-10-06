@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Role;
+use Session;
+
 
 class AdminUsersController extends Controller
 {
@@ -14,7 +18,9 @@ class AdminUsersController extends Controller
     public function index()
     {
         //
-        return view('admin.users.index');
+        $users = User::all();
+
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -25,6 +31,9 @@ class AdminUsersController extends Controller
     public function create()
     {
         //
+        $roles = Role::pluck('name', 'id')->all();
+        
+        return view('admin.users.create', compact('roles'));
     }
 
     /**
@@ -36,6 +45,19 @@ class AdminUsersController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|max:255|unique:users',
+            'role_id' => 'required',
+            'password' => 'required|string|min:6',
+        ]);
+
+        $input = $request->all();
+        $input['password'] = bcrypt($request->password);            
+
+        User::create($input);
+
+        return redirect('/admin/users');
     }
 
     /**
@@ -58,6 +80,10 @@ class AdminUsersController extends Controller
     public function edit($id)
     {
         //
+        $user = User::findOrFail($id);
+        $roles = Role::pluck('name', 'id')->all();
+
+        return view('admin.users.edit', compact('user','roles'));
     }
 
     /**
@@ -70,6 +96,29 @@ class AdminUsersController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'role_id' => 'required',
+        ]);
+
+        $user = User::findOrFail($id);
+        $input = $request->all();
+        
+        if(trim($request->password) == '')
+        {
+            $input['password'] = $user->password;
+        }
+        else
+        {
+            $request->validate([
+                'password' => 'string|min:6',
+            ]);
+            $input['password'] = bcrypt($request->password);            
+        }
+        
+        $user->update($input);
+
+        return redirect('/admin/users');
     }
 
     /**
@@ -81,5 +130,11 @@ class AdminUsersController extends Controller
     public function destroy($id)
     {
         //
+        $user = User::findOrFail($id);
+        $user->delete();
+        
+        Session::flash('deleted_user','The user has been deleted');
+
+        return redirect('/admin/users');
     }
 }
