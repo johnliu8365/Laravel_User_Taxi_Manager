@@ -45,7 +45,6 @@
         <!-- /.navbar-header -->
 
 
-
         <ul class="nav navbar-top-links navbar-right">
 
 
@@ -63,9 +62,7 @@
                     <li class="divider"></li>
                     <li>
                     <li>
-                        <a href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             Logout
                         </a>
 
@@ -78,37 +75,7 @@
             </li>
             <!-- /.dropdown -->
 
-
         </ul>
-
-
-
-
-
-
-        {{--<ul class="nav navbar-nav navbar-right">--}}
-        {{--@if(auth()->guest())--}}
-        {{--@if(!Request::is('auth/login'))--}}
-        {{--<li><a href="{{ url('/auth/login') }}">Login</a></li>--}}
-        {{--@endif--}}
-        {{--@if(!Request::is('auth/register'))--}}
-        {{--<li><a href="{{ url('/auth/register') }}">Register</a></li>--}}
-        {{--@endif--}}
-        {{--@else--}}
-        {{--<li class="dropdown">--}}
-        {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ auth()->user()->name }} <span class="caret"></span></a>--}}
-        {{--<ul class="dropdown-menu" role="menu">--}}
-        {{--<li><a href="{{ url('/auth/logout') }}">Logout</a></li>--}}
-
-        {{--<li><a href="{{ url('/admin/profile') }}/{{auth()->user()->id}}">Profile</a></li>--}}
-        {{--</ul>--}}
-        {{--</li>--}}
-        {{--@endif--}}
-        {{--</ul>--}}
-
-
-
-
 
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse">
@@ -144,18 +111,14 @@
                     </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-wrench fa-fw"></i> Posts<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-wrench fa-fw"></i>Drivers<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">All Posts</a>
+                                <a href="#">All Drivers</a>
                             </li>
 
                             <li>
-                                <a href="#">Create Post</a>
-                            </li>
-
-                            <li>
-                                <a href="#">All Comments</a>
+                                <a href="#">Create Drivers</a>
                             </li>
 
                         </ul>
@@ -167,11 +130,11 @@
                         <a href="#"><i class="fa fa-wrench fa-fw"></i>Categories<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">>All Categories</a>
+                                <a href="#">All Categories</a>
                             </li>
 
                             <li>
-                                <a href="#">>Create Category</a>
+                                <a href="#">Create Category</a>
                             </li>
 
                         </ul>
@@ -183,11 +146,11 @@
                         <a href="#"><i class="fa fa-wrench fa-fw"></i>Media<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">>All Media</a>
+                                <a href="#">All Media</a>
                             </li>
 
                             <li>
-                                <a href="#">>Upload Media</a>
+                                <a href="#">Upload Media</a>
                             </li>
 
                         </ul>

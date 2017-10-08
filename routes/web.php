@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group([], function() {
+Route::group(['middleware' => 'admin'], function() {
     Route::get('/admin', function() {
         return view('admin.index');
     });
@@ -27,3 +27,5 @@ Route::group([], function() {
     Route::resource('admin/users', 'AdminUsersController');
 
 });
+
+Route::resource('/driver', 'DriversController');

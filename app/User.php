@@ -30,4 +30,18 @@ class User extends Authenticatable
     public function role(){
         return $this->belongsTo('App\Role');
     }
+
+    public function driver(){
+        return $this->belongsTo('App\Driver');
+    }
+
+    public function isAdmin(){
+        
+        if($this->role->name == "Administrator")
+        {
+            return true;
+        }
+        
+        return false;
+    }
 }
