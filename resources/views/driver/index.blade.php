@@ -41,7 +41,7 @@
                                 <td>{{$driver->created_at->diffForHumans()}}</td>
                                 <td>{{$driver->updated_at->diffForHumans()}}</td>
                                 <td>
-                                    @if(isset($user) && $user->role_id == 3)
+                                    @if(isset($user) && $user->id == $driver->user_id)
                                         <button onclick="location.href='{{ route('driver.edit', $driver->id) }}'" class='btn btn-primary btn-sm'>EDIT</button>
                                     @endif
                                 </td>
