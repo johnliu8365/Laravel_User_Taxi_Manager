@@ -1,3 +1,15 @@
+# Laravel User Taxi Driver Manager
+
+Use Laravel to create a manage system. Use to manage Users and Taxi Drivers, then output API to React TaxiMap.
+
+![alt text](https://github.com/johnliu8365/Laravel_User_Taxi_Manager/blob/master/screenshot.gif)
+
+1. Laravel
+2. Laravel Collective Forms & HTML
+3. React TaxiMap (https://github.com/johnliu8365/React-Taxi-Map)
+
+# Laravel PHP Framework
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
