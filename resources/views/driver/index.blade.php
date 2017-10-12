@@ -9,13 +9,13 @@
                     <p class="alert alert-danger">{{ session('deleted_driver') }}</p>
                 @endif
                 
-                
                 <h1>Drivers
+                <button onclick="location.href='{{ url('driver/api/getdata') }}'" class='btn btn-info btn-lg pull-right'>Output API</button>
                     @if(isset($user) && $user->role_id == 3)
                         <button onclick="location.href='{{ route('driver.create') }}'" class='btn btn-info btn-lg pull-right'>CREATE</button>
                     @endif
                 </h1>
-
+                
                 <table class="table">
                 <thead>
                 <tr>

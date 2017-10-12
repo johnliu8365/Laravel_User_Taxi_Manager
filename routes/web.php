@@ -29,3 +29,4 @@ Route::group(['middleware' => 'admin'], function() {
 });
 
 Route::resource('/driver', 'DriversController');
+Route::get('/driver/api/getdata', 'DriversController@driversDataApi');

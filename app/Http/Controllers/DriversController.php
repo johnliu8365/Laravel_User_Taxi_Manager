@@ -124,4 +124,21 @@ class DriversController extends Controller
 
         return redirect('/driver');
     }
+
+    public function driversDataApi(){
+        $drivers = Driver::with('user')->get();
+        foreach ($drivers as $driver) {
+            $data[] = [
+                'id' => $driver->id,
+                'driverName' => $driver->user->name,
+                'driverId' => $driver->driverId,
+                'license' => $driver->license,
+                'latitude' => $driver->latitude,
+                'longitude' => $driver->longitude
+            ];
+        }
+        return response()->json($data)->header('Access-Control-Allow-Origin' , '*')
+        ->header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE')
+        ->header('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, X-Requested-With');
+    }
 }
